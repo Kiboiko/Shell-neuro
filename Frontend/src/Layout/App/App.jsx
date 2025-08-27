@@ -1,20 +1,30 @@
 import { useState } from "react";
-import { Input, message } from "antd";
+import { Input, message, Button, Space, List } from "antd";
+import { useMessageStore } from "../../store";
 import "./App.css";
+import InputZone from "../InputZone";
+import ChatList from "../ChatList/ChatList";
 
 function App() {
-  const [dialog, setDialog] = useState([
-    {
-      text: "Hello,World!",
-      role: "Assistant",
-    },
-  ]);
+  const {
+    chats,
+    currentChatId,
+    createChat,
+    deleteChat,
+    setCurrentChat,
+    renameChat,
+    addMessage,
+    getCurrentChat,
+    getCurrentMessages,
+    getChatsList,
+  } = useMessageStore();
+
+  const currentChat = getCurrentChat();
+  const currentMessages = getCurrentMessages();
+
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const addMessage = (newMessage) => {
-    setDialog((prevDialog) => [...prevDialog, newMessage]);
-  };
   const fetchAnswer = async () => {
     addMessage({ text: inputValue, role: "User" });
     setIsLoading(true);
@@ -58,25 +68,19 @@ function App() {
   return (
     <div>
       <div className="dialogWindow">
-        {dialog.map((message, index) => (
+        {currentMessages.map((message, index) => (
           <div key={index} className={"message" + " " + "From" + message.role}>
             <strong>{message.role}:</strong> {message.text}
           </div>
         ))}
       </div>
-      <Input
-        placeholder="Basic usage"
-        value={inputValue}
-        onChange={handleInputChange}
-        onPressEnter={fetchAnswer}
-        disabled={isLoading}
-        style={{
-          width: "70%",
-          display: "block",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
+      <InputZone
+        fetchAnswer={fetchAnswer}
+        inputValue={inputValue}
+        handleInputChange={handleInputChange}
+        isLoading={isLoading}
       />
+      <ChatList />
     </div>
   );
 }
