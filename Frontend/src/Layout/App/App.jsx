@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Input, message, Button, Space, List } from "antd";
 import { useMessageStore } from "../../store";
 import "./App.css";
-import InputZone from "../InputZone";
+import InputZone from "../inputZone/InputZone";
 import ChatList from "../ChatList/ChatList";
 
 function App() {
