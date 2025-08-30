@@ -1,27 +1,28 @@
+.dialogWindow {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 0;
+  margin-bottom: 30vh;
+}
+
 .message {
   margin-bottom: 10px;
-  width: fit-content;
   max-width: 60%;
   padding: 10px;
   border-radius: 10px;
+  word-wrap: break-word;
 }
 
 .message.FromUser {
   background-color: #598392;
-  margin-right: 0px;
-  margin-left: auto;
+  align-self: flex-end;
 }
 
 .message.FromAssistant {
   background-color: #aec3b0;
-}
-
-.dialogWindow {
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid black;
-  height: 180vh;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
+  align-self: flex-start;
 }

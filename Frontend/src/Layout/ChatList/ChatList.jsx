@@ -67,6 +67,7 @@ export default function ChatList() {
 
   return (
     <div className="sideBar">
+      <h1>Neuro</h1>
       <Button
         onClick={createChat}
         type="dashed"
