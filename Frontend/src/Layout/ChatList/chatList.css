@@ -3,6 +3,40 @@
   top: 0px;
   left: 0px;
   height: 100%;
-  background-color: cornflowerblue;
+  background-color: #353739;
   width: 30vh;
+  padding: 10px;
+}
+
+p {
+  margin-right: auto;
+  margin-left: auto;
+  width: 5ch;
+  color: white;
+  font-family: monospace;
+  font-size: 30px;
+  white-space: nowrap; /* не переносить текст на другую строку */
+  overflow: hidden; /* скрываем переполнение контентом */
+  border-right: 3px solid white; /* рисуем курсор */
+  animation: cursor 0.75s step-end infinite, printed_text 2s steps(5);
+}
+
+@keyframes cursor {
+  0% {
+    border-color: white;
+  }
+
+  50% {
+    border-color: transparent;
+  }
+
+  100% {
+    border-color: white;
+  }
+}
+
+@keyframes printed_text {
+  from {
+    width: 0;
+  }
 }

@@ -8,7 +8,7 @@ export default function InputZone({
   isLoading,
 }) {
   return (
-    <div style={{}} className="inputZone">
+    <div className="inputZone">
       <Input.TextArea
         value={inputValue}
         onChange={handleInputChange}
@@ -18,7 +18,8 @@ export default function InputZone({
         style={{
           minHeight: "5vh",
           maxHeight: "20vh",
-          backgroundColor: "#9DB5B2",
+          backgroundColor: "#4C5C68",
+          color: isLoading ? "#46494C" : "#DCDCDD",
         }}
         variant="borderless"
         placeholder="Message neuro"
@@ -33,9 +34,10 @@ export default function InputZone({
           marginTop: "auto",
           borderRadius: "50%",
           backgroundColor: inputValue.length > 0 ? "#1985A1" : null,
+          color: "#DCDCDD",
         }}
         onClick={fetchAnswer}
-        disabled={!(inputValue.length > 0)}
+        disabled={isLoading || inputValue.length <= 0}
       >
         <ArrowUpOutlined />
       </Button>

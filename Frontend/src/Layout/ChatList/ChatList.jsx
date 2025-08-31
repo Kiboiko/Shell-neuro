@@ -6,6 +6,7 @@ import {
   EyeOutlined,
   CheckOutlined,
   CloseOutlined,
+  MessageOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useMessageStore } from "../../store";
@@ -67,13 +68,23 @@ export default function ChatList() {
 
   return (
     <div className="sideBar">
-      <h1>Neuro</h1>
+      <p className="naming">Neuro</p>
       <Button
         onClick={createChat}
-        type="dashed"
-        style={{ marginTop: "10px", width: "100%" }}
+        type="primary"
+        style={{
+          marginTop: "10px",
+          width: "50%",
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginBottom: "10px",
+          backgroundColor: "#1985A1",
+          color: "#DCDCDD",
+          height: "4vh",
+        }}
+        icon={<MessageOutlined />}
       >
-        + Создать новый чат
+        New chat
       </Button>
 
       <List
@@ -84,7 +95,8 @@ export default function ChatList() {
             style={{
               padding: "8px 12px",
               backgroundColor:
-                chat.id === getCurrentChat().id ? "grey" : "white",
+                chat.id === getCurrentChat().id ? "#86858752" : null,
+              color: "#DCDCDD",
             }}
             actions={[
               editingChatId === chat.id ? (
@@ -113,7 +125,7 @@ export default function ChatList() {
                 >
                   <Button
                     type="text"
-                    icon={<MoreOutlined />}
+                    icon={<MoreOutlined style={{ color: "#DCDCDD" }} />}
                     size="small"
                     onClick={(e) => e.stopPropagation()}
                   />
@@ -148,7 +160,7 @@ export default function ChatList() {
                     {chat.title}
                   </div>
                 )}
-                <span style={{ color: "#666", fontSize: "12px" }}>
+                <span style={{ color: "#DCDCDD", fontSize: "12px" }}>
                   {chat.messages.length} сообщений
                 </span>
               </Space>

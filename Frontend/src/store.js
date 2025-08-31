@@ -5,7 +5,7 @@ export const useMessageStore = create((set, get) => ({
   chats: [
     {
       id: 1,
-      title: "Первый чат",
+      title: "1 чат",
       messages: [
         {
           text: "Hello, World!",
@@ -24,7 +24,7 @@ export const useMessageStore = create((set, get) => ({
 
       const newChat = {
         id: newChatId,
-        title: String(newChatId) + "номер",
+        title: String(newChatId) + " чат",
         messages: [],
       };
 
