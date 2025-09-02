@@ -8,12 +8,13 @@ export const useMessageStore = create((set, get) => ({
       title: "1 чат",
       messages: [
         {
-          text: "Hello, World!",
-          role: "Assistant",
+          // text: "Hello, World!",
+          // role: "Assistant",
         },
       ],
     },
   ],
+  animatedMessages: new Set(),
   currentChatId: 1,
   createChat: (title = "Новый чат") =>
     set((state) => {
@@ -79,5 +80,17 @@ export const useMessageStore = create((set, get) => ({
   getChatsList: () => {
     const { chats } = get();
     return chats;
+  },
+
+  markMessageAsAnimated: (messageId) => {
+    set((state) => {
+      const newAnimatedMessages = new Set(state.animatedMessages);
+      newAnimatedMessages.add(messageId);
+      return { animatedMessages: newAnimatedMessages };
+    });
+  },
+
+  clearAnimatedMessages: () => {
+    set({ animatedMessages: new Set() });
   },
 }));

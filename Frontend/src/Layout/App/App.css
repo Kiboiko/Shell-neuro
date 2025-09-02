@@ -7,6 +7,13 @@
   height: auto;
   min-height: 0;
   margin-bottom: 30vh;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.sideBar:not(.collapsed) ~ .dialogWindow,
+.sideBar:not(.collapsed) ~ .inputZone {
+  margin-left: 30vh;
+  width: calc(50% - 30vh);
 }
 
 .message {

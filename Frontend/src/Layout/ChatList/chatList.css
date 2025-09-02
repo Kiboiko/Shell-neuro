@@ -6,6 +6,20 @@
   background-color: #353739;
   width: 30vh;
   padding: 10px;
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+.sideBar.collapsed {
+  width: 50px;
+}
+
+.sidebar-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
 }
 
 p {
@@ -15,9 +29,9 @@ p {
   color: white;
   font-family: monospace;
   font-size: 30px;
-  white-space: nowrap; /* не переносить текст на другую строку */
-  overflow: hidden; /* скрываем переполнение контентом */
-  border-right: 3px solid white; /* рисуем курсор */
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid white;
   animation: cursor 0.75s step-end infinite, printed_text 2s steps(5);
 }
 

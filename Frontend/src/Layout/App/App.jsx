@@ -3,10 +3,15 @@ import { useMessageStore } from "../../store";
 import "./App.css";
 import InputZone from "../inputZone/InputZone";
 import ChatList from "../ChatList/ChatList";
-import AssistantAnswer from "../AssistantAnswer";
+import AssistantAnswer from "../AssistantAnswer/AssistantAnswer";
 
 function App() {
-  const { addMessage, getCurrentMessages } = useMessageStore();
+  const {
+    addMessage,
+    getCurrentMessages,
+    animatedMessages,
+    markMessageAsAnimated,
+  } = useMessageStore();
 
   const currentMessages = getCurrentMessages();
   const [inputValue, setInputValue] = useState("");
@@ -76,7 +81,14 @@ function App() {
         {currentMessages.map((message, index) => (
           <div key={index} className={"message" + " " + "From" + message.role}>
             {message.role === "Assistant" ? (
-              <AssistantAnswer text={message.text} />
+              <AssistantAnswer
+                text={message.text}
+                messageId={message.id || index}
+                isAnimated={animatedMessages.has(message.id || index)}
+                onAnimationComplete={() =>
+                  markMessageAsAnimated(message.id || index)
+                }
+              />
             ) : (
               message.text
             )}
@@ -94,6 +106,6 @@ function App() {
     </div>
   );
 }
-import Logo from "../AssistantAnswer";
+import Logo from "../AssistantAnswer/AssistantAnswer";
 
 export default App;

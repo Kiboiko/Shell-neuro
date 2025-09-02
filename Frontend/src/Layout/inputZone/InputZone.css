@@ -13,4 +13,10 @@
   border-radius: 30px;
   padding: 30px;
   color: #dcdcdd;
+  transition: left 0.3s ease, width 0.3s ease;
+}
+
+.sideBar:not(.collapsed) ~ .inputZone {
+  left: calc(25% + 15vh);
+  width: calc(50% - 30vh);
 }
