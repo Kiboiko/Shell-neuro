@@ -15,6 +15,8 @@
   padding: 10px;
   border-radius: 10px;
   word-wrap: break-word;
+  color: white;
+  font-size: large;
 }
 
 .message.FromUser {
@@ -23,6 +25,10 @@
 }
 
 .message.FromAssistant {
-  background-color: #aec3b0;
   align-self: flex-start;
+}
+
+.logoSender {
+  width: fit-content;
+  border: 1px solid black;
 }

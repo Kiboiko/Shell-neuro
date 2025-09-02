@@ -3,6 +3,7 @@ import { useMessageStore } from "../../store";
 import "./App.css";
 import InputZone from "../inputZone/InputZone";
 import ChatList from "../ChatList/ChatList";
+import AssistantAnswer from "../AssistantAnswer";
 
 function App() {
   const { addMessage, getCurrentMessages } = useMessageStore();
@@ -74,7 +75,11 @@ function App() {
       <div className="dialogWindow">
         {currentMessages.map((message, index) => (
           <div key={index} className={"message" + " " + "From" + message.role}>
-            <strong>{message.role}:</strong> {message.text}
+            {message.role === "Assistant" ? (
+              <AssistantAnswer text={message.text} />
+            ) : (
+              message.text
+            )}
           </div>
         ))}
       </div>
@@ -89,5 +94,6 @@ function App() {
     </div>
   );
 }
+import Logo from "../AssistantAnswer";
 
 export default App;
